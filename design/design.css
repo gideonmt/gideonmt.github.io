@@ -1,0 +1,215 @@
+:root {
+    background: #000 url('./gifs/stars.gif');
+    color: #fff;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, strong {
+    background: repeating-linear-gradient(to right, red, orange, yellow, green, blue, purple, violet, red, orange, yellow, green, blue, purple, violet 250px);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-stroke: #ffffff7a 0.5px;
+}
+
+#red { color: red; }
+#orange { color: orange; }
+#yellow { color: yellow; }
+#green { color: green; }
+#blue { color: blue; }
+#purple { color: purple; }
+
+body {
+    max-width: 1080px;
+    margin: 0 5%;
+    font: 18px/1.6 Comic Sans MS, Comic Sans, cursive;
+}
+
+@keyframes rainbow {
+    0%, 100% { color: orange; }
+    10% { color: purple; }
+    20% { color: red; }
+    30% { color: CadetBlue; }
+    40% { color: yellow; }
+    50% { color: coral; }
+    60% { color: green; }
+    70% { color: cyan; }
+    80% { color: DeepPink; }
+    90% { color: DodgerBlue; }
+}
+
+@keyframes rainbow-border {
+    0%, 100% { border-color: orange; }
+    10% { border-color: purple; }
+    20% { border-color: red; }
+    30% { border-color: CadetBlue; }
+    40% { border-color: yellow; }
+    50% { border-color: coral; }
+    60% { border-color: green; }
+    70% { border-color: cyan; }
+    80% { border-color: DeepPink; }
+    90% { border-color: DodgerBlue; }
+}
+
+h1, h2, h3 {
+    line-height: 1.4;
+}
+
+h1, h2, strong {
+    font-family: Papyrus, fantasy;
+}
+
+a, a:visited {
+    display: inline-block;
+    text-shadow: 2px 2px 4px #000000;
+    animation: rainbow 5s infinite;
+    -webkit-text-stroke: 0px;
+}
+
+main, footer {
+    margin: 0 24px;
+}
+
+main {
+    margin-top: 80px;
+}
+
+nav {
+    width: 110vw;
+    border: none;
+    position: fixed;
+    top: -8px;
+    left: 0;
+    height: 64px;
+    z-index: 10;
+    background-color: #000000;
+}
+
+nav>ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-left: 0;
+}
+
+nav li {
+    margin: 0;
+    padding: 0;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid var(--text);
+    margin: 20px 0;
+}
+
+div#contact {
+    display: flex;
+    flex-direction: column;
+}
+
+div#contact>p {
+    padding: 0;
+    margin: 0;
+}
+
+div#top h1, div#projects h2, div#uses h2, div#contact h2 {
+    position: relative;
+}
+
+div#top h1::before {
+    content: url('./gifs/hello3d.gif');
+    transform: scale(0.5) rotate(-15deg);
+    display: block;
+    position: absolute;
+    top: -30px;
+    left: -80px;
+}
+
+div#projects h2::before {
+    content: url('./gifs/projectsheading.gif');
+    transform: scale(0.2) rotate(-15deg);
+    display: block;
+    position: absolute;
+    top: -40px;
+    left: -220px;
+}
+
+div#uses h2::before {
+    content: url('./gifs/computer.gif');
+    transform: scale(0.3) rotate(5deg);
+    display: block;
+    position: absolute;
+    top: -80px;
+    left: -80px;
+}
+
+div#contact h2::before {
+    content: url('./gifs/contact.gif');
+    transform: scale(0.5) rotate(-10deg);
+    display: block;
+    position: absolute;
+    top: -25px;
+    left: -100px;
+}
+
+div::before {
+    content: " ";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    transform: rotate(45deg);
+    animation: size 4s infinite ease-in-out;
+}
+
+@keyframes size {
+    0%, 100% { transform: translateY(8px); }
+    50% { transform: translateY(-8px); }
+}
+
+div:nth-child(2)::before {
+    background-image: url('./gifs/moon.gif');
+    top: 134%;
+    left: 70%;
+}
+
+div:nth-child(3)::before {
+    background-image: url('./gifs/world_03.gif');
+    top: 40%;
+    left: 30%;
+}
+
+.cursor-follower {
+    width: 70px;
+    height: 30px;
+    position: absolute;
+    background: url('./gifs/cursor.gif') no-repeat center center;
+    background-size: cover;
+    pointer-events: none;
+    animation: cursor 1s infinite;
+    z-index: 9999;
+}
+
+@keyframes cursor {
+    0%, 100% { transform: scale(2.5); }
+    50% { transform: scale(2.7); }
+}
+
+.gif {
+    position: absolute;
+    pointer-events: none;
+    animation: sparkle 10s linear infinite;
+    opacity: 0;
+    z-index: -2;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
