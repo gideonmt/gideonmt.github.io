@@ -1,15 +1,46 @@
 :root {
+    background: var(--background, #222);
     --text: #ececec;
     --highlight: #6577ff;
-    --background: #222;
 }
 
 body {
     max-width: 650px;
     margin: 0 auto;
-    background-color: var(--background);
     color: var(--text);
     font: 18px/1.6 Helvetica, Arial, sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+.terminal {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    background: #000;
+    color: #00FF00;
+    width: 30%;
+    max-width: 400px;
+    border: 2px solid #00FF00;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    font-family: monospace;
+    font-size: 14px;
+    padding: 10px;
+}
+
+#terminal-body {
+    min-height: 150px;
+    padding: 10px;
+}
+
+.terminal input {
+    width: 100%;
+    background: transparent;
+    color: #00FF00;
+    border: none;
+    outline: none;
+    font-family: monospace;
 }
 
 h1,
