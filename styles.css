@@ -74,6 +74,22 @@ nav>ul li {
     text-align: right;
 }
 
+.projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.projects .project {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--text);
+    border: 2px solid var(--text);
+    font-size: 14px;
+    padding: 10px;
+}
+
 @media (max-width: 1080px) {
     main,
     footer {
@@ -117,15 +133,19 @@ nav>ul li {
     nav>ul {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
         border-left: none;
-        margin-top: 16px;
+        margin: 16px 24px 0 24px; 
     }
 
     nav>ul li {
-        margin: 0 25px;
+        margin: 0;
         padding: 0;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
     }
 }
 
