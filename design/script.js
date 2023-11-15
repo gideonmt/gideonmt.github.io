@@ -69,7 +69,7 @@ async function spawnCatUnderCursor(event) {
     catImage.style.height = 'auto';
 
     catImage.style.position = 'absolute';
-    const { scrollX, scrollY } = window;
+    const { scrollY } = window;
     catImage.style.left = (event.clientX - catImage.width / 2) + 'px';
     catImage.style.top = (event.clientY - catImage.height / 2 + scrollY) + 'px';
 

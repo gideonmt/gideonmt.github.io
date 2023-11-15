@@ -1,17 +1,16 @@
 :root {
-    background: var(--background, #222);
+    --background: #222;
     --text: #ececec;
     --highlight: #6577ff;
+    background: var(--background);
 }
 
 body {
-    max-width: 650px;
+    max-width: min(90%, 600px);
     margin: 0 auto;
     color: var(--text);
     font: 18px/1.6 Helvetica, Arial, sans-serif;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
 .terminal {
     position: absolute;
@@ -56,23 +55,23 @@ a:visited {
 
 nav {
     position: fixed;
-    right: 0;
+    right: min(5%, 50px);
     width: 200px;
     height: 100%;
     z-index: 1;
 }
 
-nav > ul {
+nav>ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    border-left: 2px solid var(--highlight);
 }
 
-nav > ul li {
+nav>ul li {
     margin: 0 0 20px 0;
     padding: 1px 0 0 15px;
     cursor: pointer;
+    text-align: right;
 }
 
 @media (max-width: 1080px) {
@@ -84,7 +83,11 @@ nav > ul li {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+    body {
+        max-width: min(100%, 600px);
+    }
+
     main,
     footer {
         max-width: 100%;
@@ -108,9 +111,10 @@ nav > ul li {
         height: 64px;
         z-index: 10;
         background-color: var(--background);
+        left: 0;
     }
 
-    nav ul {
+    nav>ul {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
@@ -119,8 +123,8 @@ nav > ul li {
         margin-top: 16px;
     }
 
-    nav li {
-        margin: 0;
+    nav>ul li {
+        margin: 0 25px;
         padding: 0;
     }
 }
@@ -150,11 +154,11 @@ hr {
 }
 
 div#contact {
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 
-div#contact > p {
+div#contact>p {
     padding: 0;
     margin: 0;
 }

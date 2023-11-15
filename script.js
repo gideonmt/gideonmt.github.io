@@ -43,6 +43,7 @@ document.addEventListener("keyup", (e) => {
             terminal.style.display = "block";
             commandInput.focus();
         } else {
+            document.querySelector(".terminal input").value = "";
             terminal.style.display = "none";
         }
     }
