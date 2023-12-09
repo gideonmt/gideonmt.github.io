@@ -3,6 +3,7 @@
     --text: #ececec;
     --highlight: #6577ff;
     background: var(--background);
+    background-attachment: fixed;
 }
 
 body {
