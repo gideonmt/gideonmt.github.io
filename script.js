@@ -1,12 +1,51 @@
-const terminal = document.querySelector(".terminal");
-const terminalBody = document.getElementById("terminal-body");
-const commandInput = document.getElementById("command-input");
+const terminal = document.createElement("div");
+terminal.classList.add("terminal");
 
-terminal.style.display = "none";
+const terminalBody = document.createElement("div");
+terminalBody.id = "terminal-body";
+terminal.appendChild(terminalBody);
+
+const commandInputContainer = document.createElement("div");
+commandInputContainer.id = "command-input-container";
+terminal.appendChild(commandInputContainer);
+
+const commandPrompt = document.createElement("span");
+commandPrompt.id = "command-prompt";
+commandPrompt.innerText = "~ ❯";
+commandInputContainer.appendChild(commandPrompt);
+
+const commandInput = document.createElement("input");
+commandInput.type = "text";
+commandInput.id = "command-input";
+commandInput.autofocus = true;
+commandInputContainer.appendChild(commandInput);
+
+let terminalOpen = false;
 
 function executeCommand(command) {
     command = command.trim().toLowerCase();
-    switch (command) {
+
+    // Define command aliases
+    const aliases = {
+        "help": ["help", "h", "?"],
+        "music": ["music"],
+        "arch": ["arch", "archlinux", "arch linux", "arch-linux"],
+        "rainbow": [ "lgbt", "lgbtq", "lgbtq+", "rainbow", "pride"],
+        "trans": ["trans", "transgender"],
+        "mlm": ["mlm", "gay"],
+        "lesbian": ["lesbian", ],
+        "bi": ["bi", "bisexual"],
+        "pan": ["pan", "pansexual"],
+        "enby": ["enby", "nonbinary", "non-binary", "nb"],
+        "aromantic": ["aromantic", "aro"],
+        "asexual": ["asexual", "ace"],
+        "desktop": ["desktop"],
+        "clear": ["clear"]
+    };
+
+    const matchedCommand = Object.keys(aliases).find(key => aliases[key].includes(command));
+
+    switch (matchedCommand) {
         case "help":
             terminalBody.innerHTML += "figure it out<br>";
             break;
@@ -18,7 +57,7 @@ function executeCommand(command) {
         case "arch":
             terminalBody.innerHTML += "Arch Linux is the best distro because it's lightweight and highly customizable.<br>";
             break;
-        case "gay":
+        case "rainbow":
             document.documentElement.style.setProperty('--background', 'linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet)');
             break;
         case "trans":
@@ -44,6 +83,14 @@ function executeCommand(command) {
             document.documentElement.style.setProperty('--background', 'linear-gradient(to bottom, #FCF434 20%, #FFFFFF 40%, #9C59D1 60%, #2C2C2C 90%)');
             document.documentElement.style.setProperty('--text', '#000000');
             break;
+        case "aromantic":
+            document.documentElement.style.setProperty('--background', 'linear-gradient(to bottom, #3DA542, #A7D379, #FFFFFF, #A9A9A9, #000000)');
+            document.documentElement.style.setProperty('--text', '#000');
+            break;
+        case "asexual":
+            document.documentElement.style.setProperty('--background', 'linear-gradient(to bottom, #000000, #A3A3A3, #FFFFFF, #800080)');
+            document.documentElement.style.setProperty('--text', '#000');
+            break;
         case "desktop":
             terminalBody.innerHTML += "<img src='./assets/desktop.png' alt='Desktop Screenshot' style='width: 100%; height: 100%;'><br>";
             break;
@@ -64,12 +111,12 @@ function executeCommand(command) {
 
 document.addEventListener("keyup", (e) => {
     if (e.key === "`") {
-        if (terminal.style.display === "none") {
-            terminal.style.display = "block";
-            commandInput.focus();
+        if (terminalOpen === false) {
+            document.body.appendChild(terminal);
+            terminalOpen = true;
         } else {
-            document.querySelector(".terminal input").value = "";
-            terminal.style.display = "none";
+            document.querySelector(".terminal").remove();
+            terminalOpen = false;
         }
     }
 });
@@ -77,7 +124,7 @@ document.addEventListener("keyup", (e) => {
 commandInput.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
         const command = commandInput.value;
-        terminalBody.innerHTML += `$ ${command}<br>`;
+        terminalBody.innerHTML += `~ ❯ ${command}<br>`;
         executeCommand(command);
     }
 });
