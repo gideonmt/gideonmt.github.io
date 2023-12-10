@@ -25,7 +25,6 @@ let terminalOpen = false;
 function executeCommand(command) {
     command = command.trim().toLowerCase();
 
-    // Define command aliases
     const aliases = {
         "help": ["help", "h", "?"],
         "music": ["music"],
